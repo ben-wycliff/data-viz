@@ -1,26 +1,50 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <!-- <SamplesCount /> -->
+  <div class="container pt-4">
+    <div class="row">
+      <div class="col-sm-5">
+        <SourceTyeCounts />
+      </div>
+      <div class="col-sm-7">
+        <SampleCountBarChart />
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-sm-6">
+        <RadarChart />
+      </div>
+      <div class="col-sm-6 p-0">
+        <SourceTypesMap />
+        <!-- <SamplesChart /> -->
+      </div>
+    </div>
+    <div class="row mt-5 p-5">
+      <StackedCircleChart />
+    </div>
+    <!-- <div class="row" style="position: relative">
+      <div class="col-sm-6"><SamplesChart /></div>
+    </div> -->
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+// import SamplesChart from "./components/SamplesChart.vue";
+import SampleCountBarChart from "./components/SampleCountBarChart.vue";
+import SourceTypesMap from "./components/SourceQualityMap.vue";
+import RadarChart from "./components/RadarChart.vue";
+import SourceTyeCounts from "./components/SourceTypeCounts.vue";
+import StackedCircleChart from "./components/StackedCircleChart.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
-  }
-}
+    StackedCircleChart,
+    SourceTyeCounts,
+    RadarChart,
+    SampleCountBarChart,
+    SourceTypesMap,
+  },
+};
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+<style></style>
