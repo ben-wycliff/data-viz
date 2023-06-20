@@ -14,15 +14,15 @@
         <span class="customTooltip-label">{{ customTooltipLabel }}</span>
         <span class="customTooltip-value">{{ customTooltipValue }}</span>
       </div>
-      <div class="legend">
-        <div
-          v-for="(item, index) in legendItems"
-          :key="index"
-          class="legend-item"
-        >
-          <span class="legend-color" :style="{ background: item.color }"></span>
-          <span class="legend-label">{{ item.name }}</span>
-        </div>
+    </div>
+    <div class="legend">
+      <div
+        v-for="(item, index) in legendItems"
+        :key="index"
+        class="legend-item"
+      >
+        <span class="legend-color" :style="{ background: item.color }"></span>
+        <span class="legend-label">{{ item.name }}</span>
       </div>
     </div>
   </div>
@@ -66,7 +66,6 @@ export default {
       for (let src of dst.sources) {
         // if sourceName or sourceType
         let name = src.sourceName ? src.sourceName.toLowerCase() : "";
-
         let type = src.sourceType ? src.sourceType.toLowerCase() : "";
         //1. include borehole or b/h -- update borehole
         if (name.includes("borehole") || type.includes("borehole")) {
@@ -76,7 +75,7 @@ export default {
         }
         //2. include spring
         else if (name.includes("spring") || type.includes("spring")) {
-          // include protected -- update protected string
+          // include protected -- update protected spring
           if (name.includes("protected") || type.includes("protected")) {
             this.data[2].value += 1;
           } else {
@@ -143,6 +142,22 @@ export default {
       .join("path")
       .attr("fill", (d) => color(d.data.name))
       .attr("d", arc)
+      .style("opacity", 0) // Initial opacity set to 0
+      .transition() // Add transition effect
+      .duration(1000) // Transition duration
+      .style("opacity", 1) // Set final opacity to 1
+      .attrTween("d", function (d) {
+        const interpolate = d3.interpolate({ startAngle: 0, endAngle: 0 }, d);
+        return function (t) {
+          return arc(interpolate(t));
+        };
+      })
+      .on("end", () => {
+        // Animation completed
+      });
+
+    svg
+      .selectAll("path")
       .on("mouseover", (event, d) => {
         const [x, y] = arc.centroid(d);
         this.customTooltipTop = y + height / 2;
@@ -186,6 +201,8 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  padding-bottom: 10%;
 }
 
 .customTooltip {
@@ -209,6 +226,8 @@ export default {
   flex-wrap: wrap;
   justify-content: center;
   margin-top: 10px;
+  position: absolute;
+  bottom: 4%;
 }
 
 .legend-item {
@@ -226,6 +245,6 @@ export default {
 }
 
 .legend-label {
-  font-size: 12px;
+  font-size: 14px;
 }
 </style>

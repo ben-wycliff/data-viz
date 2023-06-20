@@ -5,7 +5,7 @@
     <div id="map" class="map-chart">
       <div class="legend">
         <div class="legend-item">
-          <div class="legend-color" style="background-color: #00ff00"></div>
+          <div class="legend-color" style="background-color: #6bc76b"></div>
           <div class="legend-label">Good Water Quality</div>
         </div>
         <div class="legend-item">
@@ -34,11 +34,11 @@ export default {
     });
 
     const colors = {
-      waterBlue: "#7aabf0",
+      waterBlue: "#a6d5f2",
       gray1: "gray",
       lightYellow: "#fcfce8",
-      green: "#50C878",
-      red: "#DC143C",
+      green: "#2ecc71",
+      red: "#e74c3c",
     };
     function checkWaterQuality(src) {
       let benchMarkValues = [
@@ -125,8 +125,8 @@ export default {
       const projection = d3
         .geoMercator()
         .center([32.0, 1.0]) // Center coordinates of Uganda
-        .scale(5000) // Zoom level
-        .translate([260, 300]);
+        .scale(4900) // Zoom level
+        .translate([260, 290]);
 
       // Generate random pins within Uganda
       const pins = [];
@@ -318,9 +318,10 @@ export default {
 }
 .map-chart {
   background-color: white;
-  padding: 20px;
+  padding-bottom: 20px;
   border-radius: 10px;
   position: relative;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 #map {
   width: 100%;
@@ -357,7 +358,7 @@ export default {
   justify-content: center;
   position: absolute;
   left: 50%;
-  top: 5%;
+  bottom: 2%;
   transform: translate(-50%, -50%);
   margin-top: 10px;
   position: absolute;

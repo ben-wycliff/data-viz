@@ -219,7 +219,7 @@ export default {
       axis
         .append("text")
         .attr("class", "legend")
-        .style("font-size", "11px")
+        .style("font-size", "14px")
         .attr("text-anchor", "middle")
         .attr("dy", "0.35em")
         .attr(
@@ -273,7 +273,8 @@ export default {
           customTooltip
             .style("left", customTooltipX + "px")
             .style("top", customTooltipY + "px")
-            .style("visibility", "visible");
+            .style("visibility", "visible")
+            .style("font-size", "14px");
 
           // Update customTooltip content
           customTooltip.html(
@@ -303,8 +304,10 @@ export default {
         .append("div")
         .classed("legend-container", true)
         .style("display", "flex")
-        .style("flex-wrap", "wrap");
-
+        .style("flex-wrap", "wrap")
+        .style("justify-content", "center")
+        .style("position", "absolute")
+        .style("bottom", "4%");
       // clear all existing legend items
 
       // Create the legend items
@@ -333,7 +336,8 @@ export default {
         .append("span")
         .classed("legend-label", true)
         .text((d, i) => `${this.selectedDstSources[i]}`)
-        .style("font-size", "12px");
+        .style("font-size", "14px")
+        .style("text-align", "center");
       // Adjust the height of the SVG container to accommodate the legend
       //   svg.attr(
       //     "height",
@@ -366,6 +370,7 @@ export default {
   min-width: 200px;
   height: 100%;
   min-height: 500px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 .customTooltip {
   position: absolute;
