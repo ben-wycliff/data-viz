@@ -1,5 +1,12 @@
 <template>
-  <div ref="chartContainer" class="p-0"></div>
+  <!-- <div class="chart-container"> -->
+  <!-- <div class="packed-circle-chart"> -->
+  <div>
+    <h6 class="text-center">Dataset Circle Packing Visualization</h6>
+    <div ref="chartContainer" class="p-0 circle-packing"></div>
+  </div>
+  <!-- </div> -->
+  <!-- </div> -->
 </template>
 
 <script>
@@ -53,7 +60,8 @@ export default {
         .attr("viewBox", `-${width / 2} -${height / 2} ${width} ${height}`)
         .style("display", "block")
         .style("margin", "0")
-        .style("background", color(0))
+        .style("border-radius", "10px")
+        .style("background", "#fff")
         .style("cursor", "pointer")
         .on("click", (event) => this.zoom(event, root));
 
@@ -65,7 +73,7 @@ export default {
         .attr("fill", (d) => (d.children ? color(d.depth) : "white"))
         .attr("pointer-events", (d) => (!d.children ? "none" : null))
         .on("mouseover", function () {
-          d3.select(this).attr("stroke", "#000");
+          d3.select(this).attr("stroke", "#1385d1");
         })
         .on("mouseout", function () {
           d3.select(this).attr("stroke", null);
@@ -183,5 +191,10 @@ export default {
 svg {
   max-width: 100%;
   height: auto;
+}
+.circle-packing {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 </style>

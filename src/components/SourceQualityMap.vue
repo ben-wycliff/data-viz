@@ -35,6 +35,7 @@ export default {
 
     const colors = {
       waterBlue: "#a6d5f2",
+      blue: "#6ab4e2",
       gray1: "gray",
       lightYellow: "#fcfce8",
       green: "#2ecc71",

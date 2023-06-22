@@ -144,15 +144,15 @@ export default {
     convertToListOfObjects(data) {
       let result = [];
       let filterKeys = [
-        // "turbidity",
-        // "color",
-        // "ph",
-        // "electricalConductivity",
-        // "totalHardness",
+        "turbidity",
+        "color",
+        "ph",
+        "electricalConductivity",
+        "totalHardness",
         "calciumHardness",
-        // "sodium",
+        "sodium",
         "potassium",
-        // "totalAlkalinity",
+        "totalAlkalinity",
         "flouride",
         "sulphate",
         "chloride",
